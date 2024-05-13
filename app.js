@@ -51,19 +51,5 @@ app.get('/logout', (req, res) => {
     res.send('Logout erfolgreich');
 });
 
-const server = app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
-
-// Eventhandler für das Schließen des Servers
-server.on('close', () => {
-    console.log('Server closed');
-});
-
-// Den Server schließen, wenn Jest beendet wird
-afterAll(() => {
-    server.close();
-});
-
 
 module.exports = app;
