@@ -22,7 +22,7 @@ app.use(express.static('public'));
 const users = {
     'admin' : 'password123',
     'user1' : 'hackme'
-}
+};
 
 // get session in the /get route
 app.get('/get', (req, res) => {
