@@ -1,6 +1,5 @@
-//app.js
-const express = require('express');
 const session = require('express-session');
+const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -55,3 +54,5 @@ app.get('/logout', (req, res) => {
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`);
 });
+
+module.exports = app;

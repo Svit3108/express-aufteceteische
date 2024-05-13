@@ -1,28 +1,21 @@
-name: Node.js CI
-
+name: My Workflow
 on:
   push:
     branches: [main]
-
 jobs:
-  test:
-    name: Run Tests
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set Node.js version
+        uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: '14'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Fix Permissions for Jest
-        run: chmod +x node_modules/.bin/jest
-
-      - name: Run Tests
+      - name: Run tests
         run: npm test
