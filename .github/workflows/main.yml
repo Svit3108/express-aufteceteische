@@ -1,25 +1,32 @@
-name: GitHub action
+name: Node.js CI
+
 on:
   push:
     branches: [main]
 
 jobs:
-  Explore-GitHub-Actions:
+  install_dependencies:
+    name: Install Dependencies
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ci-example
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Setup LTS Version of Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 14.x
+      - name: Install Node.js Dependencies
+        run: npm install
+        # optional: you may want to cache the installed dependencies
+        # to speed up the build process
+        # see: https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#nodejs-example
 
-      - name: Install dependencies
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js Dependencies
         run: npm install
 
       - name: Run Tests
-        run: npm run test
+        run: npm test
