@@ -15,6 +15,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Install all Dependencies
-        run: npm ci
+        run: npm install
       - name: Run Tests
         run: npm run test
