@@ -50,9 +50,5 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.send('Logout erfolgreich');
 });
-app.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
-});
-
 
 module.exports = app;
