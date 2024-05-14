@@ -20,7 +20,8 @@ app.use(express.static('public'));
 // users
 const users = {
     'admin' : 'password123',
-    'user1' : 'hackme'
+    'user1' : 'hackme',
+    'user2' : 'svit'
 };
 
 // get session in the /get route
@@ -33,7 +34,6 @@ app.get('/get', (req, res) => {
 // login route
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
-    // TODO: REMOVE LOGS
     console.log(username);
     console.log(password);
     if (users[username] && users[username] === password) {
@@ -49,6 +49,9 @@ app.post('/login', (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.send('Logout erfolgreich');
+});
+app.listen(port, () => {
+	console.log(`Server is running on http://localhost:${port}`);
 });
 
 
